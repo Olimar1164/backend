@@ -1,4 +1,4 @@
-# Dockerfile
+# backend/Dockerfile
 
 # Usar una imagen base oficial de Python
 FROM python:3.11-slim
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando para correr la aplicación
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
